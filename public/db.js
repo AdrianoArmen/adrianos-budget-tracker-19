@@ -10,6 +10,7 @@ request.onsuccess = function (e) {
   db = e.target.result;
 
   if (navigator.onLine) {
+    console.log("Online ✅");
     storeBudget();
   }
 };
@@ -48,6 +49,7 @@ function storeBudget() {
           const transaction = db.transaction(["budget_entry"], "readwrite");
           const budgetObjectStore = transaction.objectStore("budget_entry");
           budgetObjectStore.clear();
+          console.log("Store Clear ☑️");
         })
         .catch((err) => {
           console.log(err);
